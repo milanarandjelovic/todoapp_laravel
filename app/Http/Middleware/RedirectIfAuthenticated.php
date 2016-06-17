@@ -17,7 +17,8 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
+        // add !$request->is('auth/logout') for logout
+        if (!$request->is('auth/logout') && Auth::guard($guard)->check()) {
             return redirect('/');
         }
 

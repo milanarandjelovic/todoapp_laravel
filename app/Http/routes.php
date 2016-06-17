@@ -14,6 +14,10 @@ Route::get('password/reset/{token}', ['as' => 'auth.password.reset', 'uses' => '
 Route::post('password/email', ['as' => 'auth.password.email', 'uses' => 'Auth\PasswordController@sendResetLinkEmail']);
 Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@reset']);
 
-Route::group(['middleware' => 'auth'], function() {
 
+Route::get('/', ['as' => 'welcome', 'uses' => 'PagesController@index']);
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('home', ['as' => 'home', 'uses' => 'PagesController@home']);
 });
+

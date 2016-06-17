@@ -15,15 +15,28 @@
 		{{-- Collect the nav links, forms, and other content for toggling --}}
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a href="#">Register</a>
-				<li>
-				<li>
-					<a href="#">Login</a>
-				</li>
-				<li>
-					<a href="#">Logout</a>
-				</li>
+				@if(!Auth::check())
+					<li>
+						{{ link_to_route('auth.register', 'Register') }}
+					</li>
+					<li>
+						{{ link_to_route('auth.login', 'Login') }}
+					</li>
+				@else
+					<li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						   aria-expanded="false">{{ (Auth::user()->getNameOrUsername()) }}<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Update profile</a></li>
+							<li>
+								<a href="{{ route('auth.logout') }}">Logout
+									<i class="fa fa-sign-out" aria-hidden="true"></i>
+								</a>
+							</li>
+						</ul>
+				@endif
 			</ul>
 		</div> {{-- /.navbar-collapse --}}
 
