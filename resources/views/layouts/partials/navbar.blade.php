@@ -9,7 +9,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			{{ link_to_route('welcome', 'TodoApp', [], ['class'=> 'navbar-brand']) }}
+			{{ link_to_route('home', 'TodoApp', [], ['class'=> 'navbar-brand']) }}
 		</div>
 
 		{{-- Collect the nav links, forms, and other content for toggling --}}
@@ -29,7 +29,7 @@
 						   aria-expanded="false">{{ (Auth::user()->getNameOrUsername()) }}<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Update profile</a></li>
+							<li>{{ link_to_route('user.profile', 'Profile') }}</li>
 							<li>
 								<a href="{{ route('auth.logout') }}">Logout
 									<i class="fa fa-sign-out" aria-hidden="true"></i>

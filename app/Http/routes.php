@@ -19,5 +19,7 @@ Route::get('/', ['as' => 'welcome', 'uses' => 'PagesController@index']);
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('home', ['as' => 'home', 'uses' => 'PagesController@home']);
+	Route::get('user/profile', ['as' => 'user.profile', 'uses' => 'UsersController@edit']);
+	Route::put('user/profile', ['as' => 'user.profile', 'uses' => 'UsersController@update']);
 });
 
