@@ -19,7 +19,7 @@ class RedirectIfAuthenticated
     {
         // add !$request->is('auth/logout') for logout
         if (!$request->is('auth/logout') && Auth::guard($guard)->check()) {
-            return redirect('/');
+            return redirect('home');
         }
 
         return $next($request);

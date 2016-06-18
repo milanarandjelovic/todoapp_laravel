@@ -47,7 +47,10 @@
 
 					<div class="form-group">
 						<div class="col-md-10 col-md-offset-2">
-							{!! Form::submit('Login', ['class' => 'btn btn-primary ']) !!}
+							<button type="submit" class="btn btn-primary">
+								<i class="fa fa-btn fa-sign-in"></i>Login
+							</button>
+							{{ link_to_route('auth.password.reset', 'Forgot My Password') }}
 						</div>
 					</div> {{-- /.form-group --}}
 

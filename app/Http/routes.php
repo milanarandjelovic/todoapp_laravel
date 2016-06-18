@@ -10,7 +10,7 @@ Route::get('auth/register', ['as' => 'auth.register', 'uses' => 'Auth\AuthContro
 Route::post('auth/register', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@postRegister']);
 
 /* Password reset routes */
-Route::get('password/reset/{token}', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@showResetForm']);
+Route::get('password/reset/{token?}', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@showResetForm']);
 Route::post('password/email', ['as' => 'auth.password.email', 'uses' => 'Auth\PasswordController@sendResetLinkEmail']);
 Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@reset']);
 
