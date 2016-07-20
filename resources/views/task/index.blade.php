@@ -26,13 +26,18 @@
                         <tr>
                             <td></td>
                             <td>
-                            {!! link_to_route('task.show', $task->name , [$task->id]) !!}
-                            {{-- {{ $task->name }} --}}
+                                {!! link_to_route('task.show', $task->name , [$task->id]) !!}
                             </td>
-                            <td>{{ $task->completed == 0 ? 'Not completed' : 'Completed' }}</td>
+                            <td>
+                                {{ $task->completed == 0 ? 'Not completed' : 'Completed' }}
+                            </td>
                             <td>number of subtask</td>
-                            <td>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($task->created_at))->diffForHumans() }}</td>
-                            <td>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($task->updated_at))->diffForHumans() }}</td>
+                            <td>
+                                {{ \Carbon\Carbon::createFromTimeStamp(strtotime($task->created_at))->diffForHumans() }}
+                            </td>
+                            <td>
+                                {{ \Carbon\Carbon::createFromTimeStamp(strtotime($task->updated_at))->diffForHumans() }}
+                            </td>
                             <td class="button-details">
                                 {!! link_to_route('task.edit', '', [$task->id], ['class' => 'btn btn-primary fa fa-list',
                                     'type' => 'submit','data-toggle' => 'tooltip', 'data-placement' => 'top',

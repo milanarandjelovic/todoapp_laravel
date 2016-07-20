@@ -14,6 +14,11 @@
 
 		{{-- Collect the nav links, forms, and other content for toggling --}}
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					{!! link_to_route('task.index', 'All task') !!}
+				</li>
+			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				@if(!Auth::check())
 					<li>
