@@ -14,12 +14,18 @@ Route::get('password/reset/{token?}', ['as' => 'auth.password.reset', 'uses' => 
 Route::post('password/email', ['as' => 'auth.password.email', 'uses' => 'Auth\PasswordController@sendResetLinkEmail']);
 Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\PasswordController@reset']);
 
-
+/* Welcome page routes */
 Route::get('/', ['as' => 'welcome', 'uses' => 'PagesController@index']);
 
 Route::group(['middleware' => 'auth'], function () {
+    /* Home page routes */
 	Route::get('home', ['as' => 'home', 'uses' => 'PagesController@home']);
+
+    /* User profile routes */
 	Route::get('user/profile', ['as' => 'user.profile', 'uses' => 'UsersController@edit']);
 	Route::put('user/profile', ['as' => 'user.profile', 'uses' => 'UsersController@update']);
+
+    /* Tasks routes */
+    Route::resource('task', 'TaskController');
 });
 

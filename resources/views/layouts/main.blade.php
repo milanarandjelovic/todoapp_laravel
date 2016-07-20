@@ -20,7 +20,7 @@
 
 {{-- Jquery --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-{{--Latest compiled and minified JavaScript--}}
+{{-- Latest compiled and minified JavaScript --}}
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
 </body>
