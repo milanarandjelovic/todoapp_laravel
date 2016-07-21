@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('user/profile', ['as' => 'user.profile', 'uses' => 'UsersController@update']);
 
     /* Tasks routes */
-    Route::resource('task', 'TaskController', ['except' => ['show']]);
+    Route::resource('task', 'TaskController');
 
     /* Subtask routes */
     Route::group(['prefix' => 'task/{task}'], function() {
