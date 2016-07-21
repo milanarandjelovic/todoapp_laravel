@@ -13,7 +13,7 @@
                 @endif
         </div>
             <div class="col-md-4">
-                {!! Form::submit('Add task', ['class' => 'btn btn-primary', 'id' => 'add-task']) !!}
+                {!! Form::submit('Edit task', ['class' => 'btn btn-primary', 'id' => 'add-task']) !!}
             </div>
     </div> <!-- /.form-group -->
 {!! Form::close() !!}

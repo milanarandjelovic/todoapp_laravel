@@ -1,6 +1,11 @@
 /*******************************************************************************
-*   Alert
+*   Table Task
 *******************************************************************************/
+#add-task-form .form-group label{
+    text-align: left;
+    max-width: 110px;
+}
+
 td.button-details {
     display: table-cell;
 }

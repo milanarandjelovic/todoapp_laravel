@@ -47,6 +47,6 @@ class UsersController extends Controller
 
 		return redirect()
 			->route('user.profile')
-			->with('success', 'Profile update');
+			->with('success', 'Profile is updated.');
 	}
 }
