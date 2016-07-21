@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Validator;
 use App\Models\Task;
+use App\Models\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = DB::table('tasks')->orderBy('created_at', 'desc')->paginate(6);
+        $user_id = Auth::user()->id; // login user id
+        $user = User::find($user_id);
+        $tasks = $user->tasks()->orderBy('created_at', 'desc')->paginate(6);
         return view('task.index')
             ->with('tasks', $tasks);
     }
@@ -58,7 +61,7 @@ class TaskController extends Controller
         // Create a new task
         Task::create([
             'name' => $request->input('name'),
-            'fk_user_id' => $user_id
+            'user_id' => $user_id
         ]);
 
         return redirect()

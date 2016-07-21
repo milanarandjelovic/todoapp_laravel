@@ -52,4 +52,13 @@ class User extends Authenticatable
 	{
 		return $this->first_name ?: $this->username;
 	}
+
+	/**
+	 * Return all  tasks for login user.
+	 */
+	public function tasks()
+	{
+		return $this->hasMany('App\Models\Task', 'user_id');
+	}
+
 }
