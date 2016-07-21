@@ -26,15 +26,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('user/profile', ['as' => 'user.profile', 'uses' => 'UsersController@update']);
 
     /* Tasks routes */
-    Route::resource('task', 'TaskController');
+    Route::resource('task', 'TaskController', ['except' => ['show']]);
 
     /* Subtask routes */
-    Route::get('task/{task}/subtask', ['as' => 'subtask.index', 'uses' => 'SubtaskController@index']);
-    Route::get('task/{task}/subtask/create', ['as' => 'subtask.create', 'uses' => 'SubtaskController@create']);
-    Route::get('task/{task}/subtask/{subtask}', ['as' => 'subtask.show', 'uses' => 'SubtaskController@show']);
-    Route::get('task/{task}/subtask/{subtask}/edit', ['as' => 'subtask.edit', 'uses' => 'SubtaskController@edit']);
-    Route::post('task/{task}/subtask', ['as' => 'subtask.store', 'uses' => 'SubtaskController@store']);
-    Route::put('task/{task}/subtask/{subtask}', ['as' => 'subtask.update', 'uses' => 'SubtaskController@update']);
-    Route::delete('task/{task}/subtask/{subtask}', ['as' => 'subtask.delete', 'uses' => 'SubtaskController@delete']);
+    Route::group(['prefix' => 'task/{task}'], function() {
+        Route::get('subtask', ['as' => 'subtask.index', 'uses' => 'SubtaskController@index']);
+        Route::get('subtask/create', ['as' => 'subtask.create', 'uses' => 'SubtaskController@create']);
+        Route::get('subtask/{subtask}', ['as' => 'subtask.show', 'uses' => 'SubtaskController@show']);
+        Route::get('subtask/{subtask}/edit', ['as' => 'subtask.edit', 'uses' => 'SubtaskController@edit']);
+        Route::post('subtask', ['as' => 'subtask.store', 'uses' => 'SubtaskController@store']);
+        Route::put('subtask/{subtask}', ['as' => 'subtask.update', 'uses' => 'SubtaskController@update']);
+        Route::delete('subtask/{subtask}', ['as' => 'subtask.delete', 'uses' => 'SubtaskController@delete']);
+    });
 });
 
